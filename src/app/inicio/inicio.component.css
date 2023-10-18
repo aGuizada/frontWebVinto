@@ -1,0 +1,43 @@
+/* Estilo para la barra de navegación lateral */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar .nav-link {
+  padding: 10px 0;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+/* Estilo para el área de contenido principal */
+main {
+  padding: 20px;
+}
+
+/* Ajustar estilos para pantallas más pequeñas */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  main {
+    margin-left: 0;
+  }
+}
