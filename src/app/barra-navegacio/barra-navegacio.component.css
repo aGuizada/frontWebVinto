@@ -1,0 +1,91 @@
+/* Estilos para el contenedor principal */
+.wrapper {
+  display: flex;
+}
+
+/* Estilos para la barra de navegación */
+#sidebar {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333; /* Color de fondo de la barra de navegación */
+  padding: 20px;
+}
+
+.sidebar-header {
+  text-align: center;
+  color: #fff; /* Color de texto de la cabecera */
+}
+
+/* Estilos para los enlaces del menú */
+.list-unstyled.components {
+  color: #fff; /* Color de texto de los enlaces */
+}
+
+.list-unstyled.components a {
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.list-unstyled.components a:hover {
+  background-color: #444; /* Color de fondo al pasar el mouse */
+}
+
+/* Estilos para el contenido principal */
+#content {
+  margin-left: 250px; /* Alineación del contenido principal */
+  padding: 20px;
+}
+
+/* Estilos para el contenido existente */
+.container-fluid {
+  /* Puedes agregar estilos adicionales para el contenido existente aquí */
+}
+app-line-chart {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+/* Estilos para el contenedor principal */
+.wrapper {
+  display: flex;
+  height: 100vh; /* Establece la altura al 100% del viewport */
+}
+
+/* Estilos para la barra de navegación */
+#sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  padding: 20px;
+  height: 100%; /* Ajusta la altura al 100% del viewport */
+  overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+}
+
+/* Estilos para el contenido principal */
+#content {
+  margin-left: 250px;
+  padding: 20px;
+  width: calc(
+    100% - 250px
+  ); /* Calcula el ancho para ocupar el espacio disponible */
+  height: 100%; /* Establece la altura al 100% del viewport */
+  overflow-y: auto; /* Agrega desplazamiento vertical si es necesario */
+}
+
+/* Estilos para el contenido existente */
+.container-fluid {
+  height: 100%; /* Establece la altura al 100% del viewport */
+  /* Puedes agregar estilos adicionales para el contenido existente aquí */
+}
+
+/* Estilos para que el menú sea más alto */
+#page-submenu {
+  min-height: 100%;
+}

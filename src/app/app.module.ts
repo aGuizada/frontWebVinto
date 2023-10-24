@@ -1,22 +1,29 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { BarraNavegacioComponent } from './barra-navegacio/barra-navegacio.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { LoginComponent } from './login/login.component';
+import { MapsComponent } from './maps/maps.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    BarraNavegacioComponent,
+    MapsComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
