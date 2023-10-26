@@ -8,6 +8,7 @@ import { BarraNavegacioComponent } from './barra-navegacio/barra-navegacio.compo
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { MapsComponent } from './maps/maps.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MapsComponent } from './maps/maps.component';
     InicioComponent,
     BarraNavegacioComponent,
     MapsComponent,
+    UsuariosComponent,
   ],
   imports: [
     BrowserModule,

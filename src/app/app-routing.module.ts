@@ -4,12 +4,14 @@ import { BarraNavegacioComponent } from './barra-navegacio/barra-navegacio.compo
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { MapsComponent } from './maps/maps.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'inicio', component: InicioComponent },
   { path: 'barra-navegacion', component: BarraNavegacioComponent },
   { path: 'maps', component: MapsComponent },
+  { path: 'usuarios', component: UsuariosComponent },
 ];
 
 @NgModule({

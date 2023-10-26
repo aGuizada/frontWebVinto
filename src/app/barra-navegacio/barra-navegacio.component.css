@@ -89,3 +89,35 @@ app-line-chart {
 #page-submenu {
   min-height: 100%;
 }
+/* Estilos para el menú */
+#sidebar {
+  background: #343a40; /* Fondo del menú */
+  color: #fff; /* Color del texto */
+  height: 100%;
+  position: fixed;
+  width: 250px;
+}
+
+#sidebar h3 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+#sidebar .list-unstyled {
+  padding: 20px;
+}
+
+#sidebar .list-unstyled li {
+  padding: 10px 0;
+}
+
+#sidebar .list-unstyled a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+#sidebar .list-unstyled a i {
+  margin-right: 10px;
+}
