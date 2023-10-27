@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BarraNavegacioComponent } from './barra-navegacio/barra-navegacio.component';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { MapsComponent } from './maps/maps.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'barra-navegacion', component: BarraNavegacioComponent },
   { path: 'maps', component: MapsComponent },
   { path: 'usuarios', component: UsuariosComponent },
+  { path: 'crear-usuario', component: CrearUsuarioComponent },
 ];
 
 @NgModule({

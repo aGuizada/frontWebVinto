@@ -9,6 +9,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { MapsComponent } from './maps/maps.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     BarraNavegacioComponent,
     MapsComponent,
     UsuariosComponent,
+    CrearUsuarioComponent,
   ],
   imports: [
     BrowserModule,
