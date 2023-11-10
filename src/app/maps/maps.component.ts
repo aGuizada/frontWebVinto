@@ -5,7 +5,6 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-maps',
@@ -15,24 +14,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class MapsComponent implements OnInit {
   @ViewChild('divMap') divMap!: ElementRef;
   @ViewChild('inputPlaces') inputPlaces!: ElementRef;
-
   mapa!: google.maps.Map;
-  markers: google.maps.Marker[];
-  distancia!: string;
-  formMapas!: FormGroup;
 
-  constructor(private renderer: Renderer2) {
-    this.markers = [];
-
-    this.formMapas = new FormGroup({
-      busqueda: new FormControl(''),
-      direccion: new FormControl(''),
-      referencia: new FormControl(''),
-      ciudad: new FormControl(''),
-      provincia: new FormControl(''),
-      region: new FormControl(''),
-    });
-  }
+  constructor(private renderer: Renderer2) {}
 
   ngOnInit(): void {}
 
@@ -45,109 +29,21 @@ export class MapsComponent implements OnInit {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        async (position) => {
-          await this.cargarMapa(position);
+        (position) => {
+          this.cargarMapa(position);
           this.cargarAutocomplete();
         },
-        null,
+        (error) => {
+          console.log('Error al obtener la ubicación actual:', error);
+        },
         opciones
       );
     } else {
-      console.log('navegador no compatible');
+      console.log('El navegador no es compatible con la geolocalización');
     }
   }
 
-  onSubmit() {
-    console.log('Datos del formulario: ', this.formMapas.value);
-  }
-
-  // Calcular ruta
-  mapRuta() {
-    const directionService = new google.maps.DirectionsService();
-    const directionRender = new google.maps.DirectionsRenderer();
-
-    directionRender.setMap(this.mapa);
-
-    directionService.route(
-      {
-        origin: 'Quilpué, Chile',
-        destination: 'Viña del Mar, Chile',
-        travelMode: google.maps.TravelMode.DRIVING,
-      },
-      (resultado: any) => {
-        console.log(resultado);
-        directionRender.setDirections(resultado);
-
-        this.distancia = resultado.routes[0].legs[0].distance.text;
-      }
-    );
-  }
-
-  private cargarAutocomplete() {
-    const autocomplete = new google.maps.places.Autocomplete(
-      this.renderer.selectRootElement(this.inputPlaces.nativeElement),
-      {
-        componentRestrictions: {
-          country: ['CL'],
-        },
-        fields: ['address_components', 'geometry', 'place_id'],
-        types: ['address'],
-      }
-    );
-
-    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      const place: any = autocomplete.getPlace();
-      console.log('el place completo es:', place);
-
-      this.mapa.setCenter(place.geometry.location);
-      const marker = new google.maps.Marker({
-        position: place.geometry.location,
-      });
-
-      marker.setMap(this.mapa);
-      this.llenarFormulario(place);
-    });
-  }
-
-  llenarFormulario(place: any) {
-    console.log(place);
-    const addressNameFormat: any = {
-      street_number: 'short_name',
-      route: 'long_name',
-      administrative_area_level_1: 'short_name',
-      administrative_area_level_2: 'short_name',
-      administrative_area_level_3: 'short_name',
-      country: 'long_name',
-    };
-
-    const getAddressComp = (type: any) => {
-      for (const component of place.address_components) {
-        if (component.types[0] === type) {
-          return component[addressNameFormat[type]];
-        }
-      }
-      return ' ';
-    };
-
-    const componentForm = {
-      direccion: 'location',
-      ciudad: 'administrative_area_level_3',
-      provincia: 'administrative_area_level_2',
-      region: 'administrative_area_level_1',
-    };
-
-    Object.entries(componentForm).forEach((entry: any) => {
-      const [key, value] = entry;
-
-      this.formMapas.controls[key].setValue(getAddressComp(value));
-    });
-
-    this.formMapas.controls['direccion'].setValue(
-      getAddressComp('route') + ' ' + getAddressComp('street_number')
-    );
-  }
-
-  cargarMapa(position: any): any {
+  cargarMapa(position: any): void {
     const opciones = {
       center: new google.maps.LatLng(
         position.coords.latitude,
@@ -164,27 +60,32 @@ export class MapsComponent implements OnInit {
 
     const markerPosition = new google.maps.Marker({
       position: this.mapa.getCenter(),
-      title: 'David',
+      title: 'Tu ubicación actual',
     });
 
     markerPosition.setMap(this.mapa);
-    this.markers.push(markerPosition);
+  }
 
-    google.maps.event.addListener(
-      this.mapa,
-      'click',
-      (evento: google.maps.MapMouseEvent) => {
-        const marker = new google.maps.Marker({
-          position: evento.latLng,
-          animation: google.maps.Animation.DROP,
-        });
-        marker.setDraggable(true);
-        marker.setMap(this.mapa);
-
-        google.maps.event.addListener(marker, 'click', (event: any) => {
-          marker.setMap(null);
-        });
+  cargarAutocomplete(): void {
+    const autocomplete = new google.maps.places.Autocomplete(
+      this.renderer.selectRootElement(this.inputPlaces.nativeElement),
+      {
+        componentRestrictions: {
+          country: ['BO'], // Cambiar a 'BO' para resultados de Bolivia
+        },
+        fields: ['address_components', 'geometry', 'place_id'],
+        types: ['address'],
       }
     );
+
+    google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      const place: any = autocomplete.getPlace();
+      console.log('El lugar completo es:', place);
+      this.mapa.setCenter(place.geometry.location);
+      const marker = new google.maps.Marker({
+        position: place.geometry.location,
+      });
+      marker.setMap(this.mapa);
+    });
   }
 }

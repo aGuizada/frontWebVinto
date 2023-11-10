@@ -1,104 +1,116 @@
-<div class="wrapper">
-  <nav id="sidebar">
-    <div class="sidebar-header">
-      <h3>Menú</h3>
-    </div>
-    <ul class="list-unstyled components">
-      <li>
-        <a href="#perfil"> <i class="fas fa-user"></i> Perfil </a>
+<div class="main-content">
+  <h2>Administrar Personal</h2>
+  <button (click)="displayCreateUserForm()" class="btn btn-success">
+    Crear Usuario
+  </button>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Contraseña</th>
+        <th>Número de Teléfono</th>
+        <th>Ubicación (Latitud)</th>
+        <th>Ubicación (Longitud)</th>
+        <th>Disponible</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.nombre }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.numero_telefono }}</td>
+        <td>{{ user.ubicacion_latitud }}</td>
+        <td>{{ user.ubicacion_longitud }}</td>
+        <td>{{ user.disponible }}</td>
+        <td>{{ user.rol_id }}</td>
+        <td>
+          <button (click)="editUser(user.id)" class="btn-edit">Editar</button>
+          <button (click)="deleteUser(user.id)" class="btn-delete">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="clearfix">
+    <ul class="pagination">
+      <li class="page-item disabled"><a href="#">Anterior</a></li>
+      <li class="page-item active">
+        <a href="#" class="page-link">1</a>
       </li>
-      <li>
-        <a href="crear-usuario">
-          <i class="fas fa-user-plus"></i> Crear Usuario
-        </a>
-      </li>
-      <li>
-        <a href="#usuarios-registrados">
-          <i class="fas fa-users"></i> Usuarios Registrados
-        </a>
-      </li>
+      <li class="page-item"><a href="#" class="page-link">2</a></li>
+      <li class="page-item"><a href="#" class="page-link">3</a></li>
+      <li class="page-item"><a href="#" class="page-link">4</a></li>
+      <li class="page-item"><a href="#" class="page-link">5</a></li>
+      <li class="page-item"><a href="#">Siguiente</a></li>
     </ul>
-  </nav>
+  </div>
 </div>
 
-<div class="main-content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="table-wrapper">
-        <div class="table-title">
-          <div class="row">
-            <div
-              class="col-sm-6 p-0 d-flex justify-content-lg-start justify-content-center"
-            >
-              <h2 class="ml-lg-2">Administrar Personal</h2>
-            </div>
-            <div
-              class="col-sm-6 p-0 d-flex justify-content-lg-end justify-content-center"
-            >
-              <button (click)="displayCreateUserForm()" class="btn btn-success">
-                <i class="material-icons">&#xE147;</i>
-                <span>Crear Usuario</span>
-              </button>
-            </div>
+<!-- Formulario para crear usuarios -->
+<div *ngIf="showCreateUserForm" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h4 class="modal-title">Crear Nuevo Usuario</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input
+              type="text"
+              id="nombre"
+              formControlName="nombre"
+              class="form-control"
+            />
           </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="numero_telefono">Número de Teléfono:</label>
+            <input
+              type="text"
+              id="numero_telefono"
+              formControlName="numero_telefono"
+              class="form-control"
+            />
+          </div>
+          <!-- Agrega más campos según tus necesidades -->
         </div>
-        <table class="table table-striped table-hover">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Contraseña</th>
-              <th>Número de Teléfono</th>
-              <th>Ubicación (Latitud)</th>
-              <th>Ubicación (Longitud)</th>
-              <th>Disponible</th>
-              <th>Rol</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Aquí puedes iterar sobre los usuarios y mostrar sus datos -->
-            <!-- Puedes usar *ngFor para generar filas de usuarios dinámicamente -->
-            <tr *ngFor="let user of users">
-              <td>{{ user.id }}</td>
-              <td>{{ user.nombre }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.password }}</td>
-              <td>{{ user.numero_telefono }}</td>
-              <td>{{ user.ubicacion_latitud }}</td>
-              <td>{{ user.ubicacion_longitud }}</td>
-              <td>{{ user.disponible }}</td>
-              <td>{{ user.rol_id }}</td>
-              <td>
-                <!-- Botón para editar usuario -->
-                <button (click)="editUser(user.id)" class="btn-edit">
-                  Editar
-                </button>
-                <!-- Botón para eliminar usuario -->
-                <button (click)="deleteUser(user.id)" class="btn-delete">
-                  Eliminar
-                </button>
-              </td>
-            </tr>
-            <!-- Fin de la iteración -->
-          </tbody>
-        </table>
-
-        <div class="clearfix">
-          <ul class="pagination">
-            <li class="page-item disabled"><a href="#">Anterior</a></li>
-            <li class="page-item active">
-              <a href="#" class="page-link">1</a>
-            </li>
-            <li class="page-item"><a href="#" class="page-link">2</a></li>
-            <li class="page-item"><a href="#" class="page-link">3</a></li>
-            <li class="page-item"><a href="#" class="page-link">4</a></li>
-            <li class="page-item"><a href="#" class="page-link">5</a></li>
-            <li class="page-item"><a href="#">Siguiente</a></li>
-          </ul>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="closeCreateUserForm()"
+          >
+            Cerrar
+          </button>
+          <button type="submit" class="btn btn-success">Crear</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

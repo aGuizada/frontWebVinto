@@ -1,64 +1,95 @@
-/* Estilos generales */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+/* Estilos para el contenedor principal */
+.wrapper {
+  display: flex;
 }
 
-/* Estilos para el panel */
-.panel {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+/* Estilos para la barra lateral */
+#sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.sidebar-header {
   margin-bottom: 20px;
 }
 
-.panel-heading {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
+.sidebar-header h3 {
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.panel-icon {
-  font-size: 24px;
-  margin-right: 10px;
+.list-unstyled {
+  padding-left: 0;
 }
 
-.media-body {
-  display: inline-block;
+.list-unstyled li {
+  margin-bottom: 10px;
 }
 
-/* Estilos para las columnas */
-.col-lg-4,
-.col-md-6 {
-  padding: 15px;
+.list-unstyled li a {
+  color: #333;
+  text-decoration: none;
+  display: block;
 }
 
-/* Estilos para los gráficos */
+.list-unstyled li a:hover {
+  color: #555;
+}
+
+/* Estilos para el contenido principal */
+#content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1200px;
+}
+
+/* Estilos adicionales para los elementos existentes */
 .white-box {
   background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
 }
 
-/* Estilos para los títulos y números */
-.md-title {
-  font-size: 18px;
+.col-md-12 {
+  width: 100%;
 }
 
-.mt5 {
-  margin-top: 5px;
-  font-size: 24px;
+.col-lg-6 {
+  width: 50%;
 }
 
-h4.nomargin {
+/* Estilos para la barra de navegación */
+.navbar {
+  background-color: #101010;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
   font-size: 20px;
-  margin: 0;
+  font-weight: bold;
+  color: #080808;
 }
 
-/* Estilos para la separación */
-hr {
-  border: 1px solid #ccc;
+.navbar-nav {
+  margin-left: auto;
 }
 
-/* Estilos para los gráficos */
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #000000;
+}

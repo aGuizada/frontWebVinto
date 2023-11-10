@@ -1,0 +1,74 @@
+nav {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  background-color: #333;
+  padding-top: 20px;
+  z-index: 100;
+}
+
+ul {
+  list-style-type: none;
+  margin: 50px 50px; /* Ajusta según sea necesario para mover el menú */
+  margin-top: 0px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00bcd4; /* Cambia el color al pasar el ratón sobre el enlace */
+}
+
+.logo {
+  font-size: 2em;
+  color: #00bcd4; /* Color del logo */
+  margin-top: 20px; /* Ajusta según sea necesario para subir más el logo */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor flex */
+}
+
+.navbar-brand img {
+  max-width: 100%;
+  height: auto;
+  /* O ajusta según sea necesario */
+}
+
+/* Agrega estilos adicionales según sea necesario */
+/* Añade un margen izquierdo al área principal del contenido */
+.main-content {
+  margin-left: 320px; /* Elige el valor que funcione mejor para tu diseño */
+}
+
+/* Establece un ancho máximo para el área principal del contenido para evitar que se extienda más allá del ancho deseado */
+.main-content-container {
+  max-width: calc(
+    100% - 320px
+  ); /* Ten en cuenta el margen izquierdo al establecer el ancho máximo */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+/* Ajusta la posición y el ancho del navbar para que no se sobreponga a las páginas */
+nav {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  background-color: #333;
+  padding-top: 20px;
+  z-index: 100;
+  left: 0; /* Asegura que el navbar esté pegado al borde izquierdo */
+}
+
+/* Otros estilos existentes... */

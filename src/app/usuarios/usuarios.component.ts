@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { ServicioService } from '../service/servicio.service';
 
 @Component({
@@ -12,11 +13,12 @@ export class UsuariosComponent implements OnInit {
   userForm!: FormGroup;
   editing = false;
   selectedUserId: number | null = null;
-  showCreateUserForm = false; // Control para mostrar u ocultar el formulario
+  showCreateUserForm = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private servicioService: ServicioService
+    private servicioService: ServicioService,
+    private modalService: BsModalService
   ) {}
 
   ngOnInit() {
@@ -42,8 +44,8 @@ export class UsuariosComponent implements OnInit {
       const newUser = this.userForm.value;
       this.servicioService.createUser(newUser).subscribe((response) => {
         console.log('Usuario creado con éxito', response);
-        // You can redirect the user to the details page of the new user or another page.
-        // For example, you can use the Angular Router to navigate to a different page.
+        // Puedes redirigir al usuario a la página de detalles del nuevo usuario o a otra página.
+        // Por ejemplo, puedes usar el enrutador de Angular para navegar a una página diferente.
       });
       this.showCreateUserForm = false; // Oculta el formulario después de enviar
     }
@@ -52,13 +54,13 @@ export class UsuariosComponent implements OnInit {
   editUser(id: number) {
     this.editing = true;
     this.selectedUserId = id;
-    // Load user data for editing if needed
+    // Carga los datos del usuario para editar si es necesario
   }
 
   updateUser(id: number) {
     const updatedUser = this.userForm.value;
     this.servicioService.updateUser(id, updatedUser).subscribe((data) => {
-      // Handle the response or redirect to the details page
+      // Maneja la respuesta o redirige a la página de detalles
     });
     this.editing = false;
     this.selectedUserId = null;
@@ -67,8 +69,8 @@ export class UsuariosComponent implements OnInit {
   deleteUser(id: number) {
     if (confirm('¿Estás seguro de que deseas eliminar este usuario?')) {
       this.servicioService.deleteUser(id).subscribe((data) => {
-        // Handle the response or update the user list
-        this.users = this.users.filter((user) => user.id !== id); // Remove the deleted user from the local list
+        // Maneja la respuesta o actualiza la lista de usuarios
+        this.users = this.users.filter((user) => user.id !== id); // Elimina el usuario eliminado de la lista local
       });
     }
   }

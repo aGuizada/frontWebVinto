@@ -31,7 +31,7 @@ export class LoginComponent {
           console.log(response);
 
           // Redirect to another page after successful login
-          this.router.navigate(['/barra-navegacion']); // Replace 'dashboard' with the route to your desired page
+          this.router.navigate(['/dashboard']); // Replace 'dashboard' with the route to your desired page
         },
         (error) => {
           // Handle login error

@@ -32,4 +32,15 @@ export class ServicioService {
   deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.URL}users/${id}`);
   }
+
+  createRol(nombre: string): Observable<any> {
+    return this.http.post(this.URL + 'roles', { nombre });
+  }
+  getRoles(): Observable<any> {
+    const endpoint = `${this.URL}roles`; // Reemplaza 'roles' con la ruta correcta de tu API
+    return this.http.get<any>(endpoint);
+  }
+  deleteRol(id: number): Observable<any> {
+    return this.http.delete(`${this.URL}roles/${id}`);
+  }
 }
