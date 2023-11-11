@@ -2,3 +2,15 @@
   width: 100%;
   height: 400px;
 }
+.main-content {
+  margin-left: 290px; /* Ajusta según el ancho de tu barra de navegación */
+  padding: 20px 30px; /* Añade espacio alrededor del contenido, con más padding a la derecha */
+}
+
+/* Establece un ancho máximo para el área principal del contenido para evitar que se extienda más allá del ancho deseado */
+.main-content-container {
+  max-width: calc(
+    100% - 290px
+  ); /* Ajusta según el margen izquierdo y el espacio adicional */
+  margin: 0 auto; /* Centra el contenido horizontalmente */
+}

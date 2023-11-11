@@ -1,57 +1,77 @@
-body {
-  background-size: cover;
-  background-position: center;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.cascading-right {
+  margin-right: -60px;
 }
 
-#login-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: rgba(41, 38, 38, 0.741);
-  border: 1px solid #dcdcdc74;
+@media (max-width: 991.98px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+.card {
+  border: 2px solid #00000046; /* Agrega un borde alrededor del card */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-body {
+  background: hsla(0, 0%, 100%, 0.55);
+  backdrop-filter: blur(30px);
+  border-radius: 150px;
+  padding: 30px; /* Ajusta el espacio interno según tus necesidades */
+}
+
+.form-outline {
+  position: relative;
+  margin-bottom: 20px; /* Espacio entre los campos */
+}
+
+.form-outline input {
+  width: 80%; /* Reducir el ancho al 80% */
+  padding: 12px;
+  border: 1px solid #ced4da;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  padding: 20px;
-  max-width: 500%; /* Ancho máximo del 100% para ser completamente responsivo */
-  margin-left: 400px;
+  background-color: transparent;
+  color: #495057;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.card-header {
-  background-color: #007bff;
-  color: #ffffff9e;
-  text-align: center;
-  padding: 15px;
-  border-radius: 8px 8px 0 0;
+.form-outline input:focus {
+  border-color: #007bff; /* Color del borde al enfocar el campo */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar el campo */
 }
 
-#login-card input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #dcdcdc;
-  border-radius: 4px;
+.form-label {
+  position: absolute;
+  top: 14px; /* Ajusta la posición de la etiqueta según el espacio interno del campo */
+  left: 12px;
+  color: #495057; /* Color del texto de la etiqueta */
+  font-size: 16px; /* Tamaño de la fuente de la etiqueta */
+  transition: transform 0.15s ease-in-out, opacity 0.15s ease-in-out;
 }
 
-.text-center button {
+.form-outline input:placeholder-shown + .form-label {
+  opacity: 0;
+  transform: translateY(0);
+}
+
+.btn-primary {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 15px 30px; /* Ajusta el espacio interno del botón según tus necesidades */
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Media query para pantallas más pequeñas */
-@media (max-width: 768px) {
-  #login-card {
-    max-width: 90%; /* Puedes ajustar este valor según tus necesidades */
-    margin: 0;
-  }
+.btn-primary:hover {
+  background-color: #0056b3; /* Cambia el color al pasar el ratón sobre el botón */
+}
+
+.rounded-4 {
+  border-radius: 15px; /* Ajusta el radio de borde según tus necesidades */
+}
+
+.shadow-lg {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2); /* Ajusta la intensidad de la sombra según tus necesidades */
 }

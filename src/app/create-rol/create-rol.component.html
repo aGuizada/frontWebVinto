@@ -1,74 +1,78 @@
-<div class="container">
-  <h2>Crear Nuevo Rol</h2>
+<div class="main-content">
+  <div class="container">
+    <h2>Crear Nuevo Rol</h2>
 
-  <!-- Mostrar mensaje si hay uno -->
-  <div *ngIf="mensaje" class="alert alert-success">
-    {{ mensaje }}
-  </div>
-
-  <form [formGroup]="rolForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="nombre">Nombre del Rol:</label>
-      <input
-        type="text"
-        id="nombre"
-        formControlName="nombre"
-        class="form-control"
-      />
+    <!-- Mostrar mensaje si hay uno -->
+    <div *ngIf="mensaje" class="alert alert-success">
+      {{ mensaje }}
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!rolForm.valid">
-      Crear Rol
-    </button>
-  </form>
+    <form [formGroup]="rolForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre">Nombre del Rol:</label>
+        <input
+          type="text"
+          id="nombre"
+          formControlName="nombre"
+          class="form-control"
+        />
+      </div>
 
-  <!-- Botón para ver los roles -->
-  <button class="btn btn-primary" (click)="getRoles()">Ver Roles</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!rolForm.valid">
+        Crear Rol
+      </button>
+    </form>
+
+    <!-- Botón para ver los roles -->
+    <button class="btn btn-primary" (click)="getRoles()">Ver Roles</button>
+  </div>
+
+  <!-- Ventana modal -->
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Mensaje</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{ mensaje }}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">
+        Cerrar
+      </button>
+    </div>
+  </ng-template>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre del Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí puedes iterar sobre los roles y mostrar sus datos -->
+      <!-- Puedes usar *ngFor para generar filas de roles dinámicamente -->
+      <tr *ngFor="let rol of roles">
+        <td>{{ rol.id }}</td>
+        <td>{{ rol.nombre }}</td>
+        <td>
+          <!-- Botón para editar rol (si es necesario) -->
+
+          <button (click)="deleteRol(rol.id)" class="btn-delete">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+      <!-- Fin de la iteración -->
+    </tbody>
+  </table>
 </div>
-
-<!-- Ventana modal -->
-<ng-template #template>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Mensaje</h4>
-    <button
-      type="button"
-      class="close pull-right"
-      aria-label="Close"
-      (click)="modalRef.hide()"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>{{ mensaje }}</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">
-      Cerrar
-    </button>
-  </div>
-</ng-template>
-
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre del Rol</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Aquí puedes iterar sobre los roles y mostrar sus datos -->
-    <!-- Puedes usar *ngFor para generar filas de roles dinámicamente -->
-    <tr *ngFor="let rol of roles">
-      <td>{{ rol.id }}</td>
-      <td>{{ rol.nombre }}</td>
-      <td>
-        <!-- Botón para editar rol (si es necesario) -->
-
-        <button (click)="deleteRol(rol.id)" class="btn-delete">Eliminar</button>
-      </td>
-    </tr>
-    <!-- Fin de la iteración -->
-  </tbody>
-</table>
