@@ -72,3 +72,54 @@ nav {
 }
 
 /* Otros estilos existentes... */
+/* Estilos para la primera barra de navegación (navbar-dark) en la parte inferior */
+.navbar-dark {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  background-color: #333;
+  padding-top: 20px;
+  z-index: 100;
+  left: 0;
+}
+
+/* Estilos para la segunda barra de navegación (navbar-light) */
+.navbar-light {
+  color: #1a1818;
+  background-color: #642a2a; /* Cambia el color de fondo a negro */
+  height: 80px; /* Ajusta la altura según tus necesidades */
+  position: fixed; /* Fija la barra de navegación en la parte superior */
+  top: 0; /* Coloca la barra de navegación en la parte superior */
+  left: 300px; /* Ancho de la primera barra de navegación */
+  width: calc(
+    100% - 300px
+  ); /* Ancho total menos el ancho de la primera barra */
+  z-index: 101; /* Asegura que la segunda barra esté sobre la primera */
+}
+
+/* Estilos para los enlaces de la segunda barra de navegación */
+.navbar-light .navbar-nav .nav-link {
+  color: #080707 !important; /* Cambia el color del texto a blanco */
+  font-size: 16px; /* Ajusta el tamaño del texto según tus necesidades */
+}
+
+/* Cambia el color del texto de los enlaces al pasar el ratón sobre ellos en la segunda barra de navegación */
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #ffd700; /* Cambia el color al pasar el ratón sobre el enlace */
+}
+
+/* Estilos para el logotipo de la segunda barra de navegación */
+.navbar-light .navbar-brand {
+  font-size: 1.5em; /* Ajusta el tamaño del logotipo según tus necesidades */
+  color: #ffffff !important; /* Cambia el color del logotipo a blanco */
+}
+
+/* Cambia el color del texto del logotipo al pasar el ratón sobre él en la segunda barra de navegación */
+.navbar-light .navbar-brand:hover {
+  color: #ffd700; /* Cambia el color al pasar el ratón sobre el logotipo */
+}
+
+/* Ajusta la altura y el espaciado de la segunda barra de navegación */
+.navbar-light .navbar-nav {
+  margin-top: 30px; /* Ajusta el margen superior según tus necesidades */
+}

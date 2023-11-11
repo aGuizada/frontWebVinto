@@ -1,6 +1,7 @@
 .main-content {
-  margin-left: 290px; /* Ajusta según el ancho de tu barra de navegación */
+  margin-left: 290px; /* Ajusta según el ancho de tu barra de navegación secundaria */
   padding: 20px 30px; /* Añade espacio alrededor del contenido, con más padding a la derecha */
+  margin-top: 50px; /* Ajusta el margen superior según tus necesidades */
 }
 
 /* Establece un ancho máximo para el área principal del contenido para evitar que se extienda más allá del ancho deseado */
